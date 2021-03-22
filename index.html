@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Fullscreen API Integration | DriveWorks</title>
+
+    <style>
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .output {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* (Optional) Loading Styles */
+        .output.is-loading::before {
+            content: '';
+            position: absolute;
+            display: block;
+            font-size: 2.5em;
+            width: 1em;
+            height: 1em;
+            top: 50%;
+            left: 50%;
+            margin: -0.5em 0 0 -0.5em;
+            border: 10px solid #ddd;
+            border-top: 10px solid #222;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Form Render Area -->
+    <div id="specification-output" class="output is-loading"></div>
+
+    <!-- Load Client SDK library -->
+    <!-- Replace "YOUR-DRIVEWORKS-LIVE-SERVER-URL" with your DriveWorks Live server address, which serves the landing page -->
+    <script src="https://YOUR-DRIVEWORKS-LIVE-SERVER-URL/DriveWorksLiveIntegrationClient.min.js"></script>
+
+    <!-- Load Configuration -->
+    <script src="config.js"></script>
+
+    <!-- Example Functions -->
+    <script async>
+
+        const specificationOutput = document.getElementById("specification-output");
+
+        // Create DriveWorks API client
+        const DW_CLIENT = new window.DriveWorksLiveClient(config.serverUrl);
+
+        // Run on load
+        (async function () {
+
+            try {
+
+                // Login to Group
+                await DW_CLIENT.loginGroup(config.groupAlias);
+
+                // Create new Specification
+                const specification = await DW_CLIENT.createSpecification(config.groupAlias, config.projectName);
+
+                // Render Specification
+                await specification.render(specificationOutput);
+
+                // (Optional) Remove loading style
+                specificationOutput.classList.remove("is-loading");
+
+                // (Optional) Prevent Specification timeout
+                pingSpecification(specification);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        })();
+
+        /**
+         * Prevent Specification timeout
+         * 
+         * A Specification will timeout after a configured period of inactivity (see DriveWorksConfigUser.xml).
+         * This function prevents a Specification timing out as long as the page is in view.
+         * 
+         * @param specification The Specification object.
+         */
+        function pingSpecification(specification) {
+
+            // Disable ping if interval is 0
+            if (config.specificationPingInterval === 0) {
+                return;
+            }
+
+            // Ping Specification to reset timeout
+            specification.ping();
+
+            // Schedule next ping
+            setTimeout(pingSpecification, config.specificationPingInterval * 1000, specification);
+
+        }
+
+    </script>
+
+</body>
+</html>
