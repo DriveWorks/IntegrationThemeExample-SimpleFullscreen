@@ -12,8 +12,6 @@ Join our [online community](https://my.driveworks.co.uk) for discussion, resourc
 - Uses very simple HTML/CSS/JS - which is freely modifiable and expandable.
 - Loads an external configuration file (`config.js`)
     - These options can be stored inline, if preferred.
-- Loads an external stylesheet (`style.css`)
-    - These styles can be stored inline, if preferred.
 - Displays an optional loading state - to avoid an initial blank screen.
 
 ### To use:
