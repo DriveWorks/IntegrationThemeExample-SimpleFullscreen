@@ -4,8 +4,12 @@
 
 A distributable template that renders a predefined project fullscreen - set via a config file.
 
+---
+
 Please note: DriveWorks are not accepting pull requests for this example.  
 Join our [online community](https://my.driveworks.co.uk) for discussion, resources and to suggest other examples.
+
+---
 
 ### Overview:
 - Dynamically injects the DriveWorks Live Client library script using the configured server url (see config.js).
@@ -30,7 +34,10 @@ Join our [online community](https://my.driveworks.co.uk) for discussion, resourc
     * `specificationPingInterval` - [optional] The interval at which to 'ping' the server automatically
         * This ensures a session is kept alive during inactivity, if desired.
 
-3. Host the example locally or on a remote server.
+3. Ensure that the Integration Theme server is running, using any of the available methods (e.g. Personal Web Edition, DriveWorks Live, IIS)
+    * For more information, see [Selecting the Integration Theme](https://docs.driveworkspro.com/Topic/IntegrationThemeSelect).
+
+4. Host the example locally or on a remote server.
     * Ensure `<corsOrigins>` in DriveWorksConfigUser.xml permits request from this location.
     See [Integration Theme Settings](https://docs.driveworkspro.com/Topic/IntegrationThemeSettings) for additional guidance.
 
@@ -59,6 +66,6 @@ If you are unable to use the dynamic library loading demonstrated in this exampl
 ---
 
 This source code has been made available to demonstrate how you can integrate with DriveWorks using the DriveWorks Live API.
-This code is provided under the MIT license, for more details see LICENSE.md.
+This code is provided under the MIT license. For more details, see the included LICENSE file.
 
 The example requires that you have the latest DriveWorks Live SDK installed, operational and remotely accessible.
