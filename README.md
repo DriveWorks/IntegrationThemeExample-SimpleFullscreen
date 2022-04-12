@@ -1,4 +1,4 @@
-# Integration Theme Example - Fullscreen Form
+# DriveWorks Live - Integration Theme Example - Simple Fullscreen Form
 ### Release: 20.0
 #### Minimum DriveWorks Version: 18.0
 
