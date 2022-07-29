@@ -1,5 +1,5 @@
 # DriveWorks Live - Integration Theme Example - Simple Fullscreen Form
-### Release: 20.0
+### Release: 20.1
 #### Minimum DriveWorks Version: 18.0
 
 A distributable template that renders a predefined project fullscreen - set via a config file.
@@ -34,11 +34,11 @@ Join our [online community](https://my.driveworks.co.uk) for discussion, resourc
     * `specificationPingInterval` - [optional] The interval at which to 'ping' the server automatically
         * This ensures a session is kept alive during inactivity, if desired.
 
-3. Ensure that the Integration Theme server is running, using any of the available methods (e.g. Personal Web Edition, DriveWorks Live, IIS)
+3. Ensure that the Integration Theme server is running, using any of the available methods (e.g. Personal Web Edition, DriveWorks Live, IIS).
     * For more information, see [Selecting the Integration Theme](https://docs.driveworkspro.com/Topic/IntegrationThemeSelect).
 
 4. Host the example locally or on a remote server.
-    * Ensure `<corsOrigins>` in DriveWorksConfigUser.xml permits request from this location.
+    * Ensure `<corsOrigins>` in DriveWorksConfigUser.xml permits requests from this location.
     See [Integration Theme Settings](https://docs.driveworkspro.com/Topic/IntegrationThemeSettings) for additional guidance.
 
 ### Troubleshooting:
