@@ -1,5 +1,5 @@
 # DriveWorks Live - Integration Theme Example - Simple Fullscreen Form
-### Release: 21.0
+### Release: 21.1
 #### Minimum DriveWorks Version: 18.0
 
 A distributable template that renders a predefined project fullscreen - set via a config file.
