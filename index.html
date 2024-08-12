@@ -73,36 +73,14 @@
                 // Remove loading style
                 specificationOutput.classList.remove("is-loading");
 
-                // (Optional) Prevent Specification timeout
-                pingSpecification(specification);
+                // Prevent Specification timeout from inactivity, as long as the page is in view.
+                // A Specification will timeout after a configured period of inactivity (see DriveWorksConfigUser.xml).
+                specification.enableAutoPing(config.specificationPingInterval);
 
             } catch (error) {
                 console.log(error);
             }
         }
-
-        /**
-         * Prevent Specification timeout
-         * 
-         * A Specification will timeout after a configured period of inactivity (see DriveWorksConfigUser.xml).
-         * This function prevents a Specification timing out as long as the page is in view.
-         * 
-         * @param specification The Specification object.
-         */
-        function pingSpecification(specification) {
-
-            // Disable ping if interval is 0, or not a number
-            if (typeof config.specificationPingInterval !== "number" || config.specificationPingInterval === 0) {
-                return;
-            }
-
-            // Ping Specification to reset timeout
-            specification.ping();
-
-            // Schedule next ping
-            setTimeout(pingSpecification, config.specificationPingInterval * 1000, specification);
-        }
-
     </script>
 
     <!-- Option A) Directly load Client Library -->
